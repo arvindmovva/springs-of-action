@@ -93,7 +93,7 @@ export async function POST(request) {
         model: "claude-sonnet-4-20250514",
         max_tokens: 4096,
         system: SYSTEM_PROMPT,
-        messages: [{ role: "user", content: "Analyze this text:\\n\\n\\"\\"\\"\\n" + text + "\\n\\"\\"\\"" }],
+        messages: [{ role: "user", content: 'Analyze this text:\n\n"""\n' + text + '\n"""' }],
       }),
     });
 
