@@ -78,7 +78,7 @@ export async function POST(request) {
     if (!text || typeof text !== "string" || !text.trim()) {
       return new Response(JSON.stringify({ error: "No text provided." }), { status: 400, headers });
     }
-    if (text.length > 10000) {
+    if (text.length > 50000) {
       return new Response(JSON.stringify({ error: "Text too long. Max 10,000 characters." }), { status: 400, headers });
     }
 
@@ -91,7 +91,7 @@ export async function POST(request) {
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
-        max_tokens: 4096,
+        max_tokens: 8192,
         system: SYSTEM_PROMPT,
         messages: [{ role: "user", content: 'Analyze this text:\n\n"""\n' + text + '\n"""' }],
       }),
